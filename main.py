@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
+import datetime
 #import seaborn as sns
 
 CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSk9VyduRn6RXuibvKtgoGcRjrn0hGjm5iuGz5nzc8T4Jg68im8ck7hYr8nsnEeBDDJlgKVz0bSjPrV/pub?output=csv'
@@ -21,4 +22,6 @@ print(df)
 f, ax = plt.subplots()
 plt.bar(df["Datum"], df["Dauer"], color="aqua", alpha=0.5)
 plt.plot(df["Datum"], df["Wochenschnitt"])
+ax.set_xlim([datetime.date(2022, 1, 1), datetime.date(2022, 3, 1)])
+f.autofmt_xdate()
 st.pyplot(f)
