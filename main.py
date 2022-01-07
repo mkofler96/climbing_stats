@@ -14,9 +14,11 @@ df = pd.read_csv(CSV_URL)
 df['Datum'] = pd.to_datetime(df['Datum'], format='%d.%m.%Y')
 df['Gewicht'] = df['Gewicht'].str[:-3].str.replace(',', '.').astype(float)
 df['Dauer'] = df['Dauer'].str.replace(',', '.').astype(float)
+df['Dauer'] = df['Dauer'].fillna(0)
+df['Wochenschnitt'] = df['Dauer'].rolling(7).mean()
 print(df)
 
 f, ax = plt.subplots()
-plt.bar(df["Datum"], df["Dauer"])
-
+plt.bar(df["Datum"], df["Dauer"], color="aqua", alpha=0.5)
+plt.plot(df["Datum"], df["Wochenschnitt"])
 st.pyplot(f)
