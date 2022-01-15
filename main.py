@@ -53,7 +53,7 @@ total_hours = df["Dauer"].sum()
 
 begin = pd.Timestamp(2022, 1, 8)
 end = pd.to_datetime((datetime.date.today()))
-weekly_valid_hours = df["Wochenschnitt"].loc[(df["Datum"] > begin) & (df["Datum"] < end)]
+weekly_valid_hours = df["Wochenschnitt"].loc[(df["Datum"] >= begin) & (df["Datum"] <= end)]
 print(weekly_valid_hours)
 
 weekly_average = weekly_valid_hours.mean().round(1)
@@ -66,7 +66,7 @@ def html_string_big_small(number, description, color):
     description_str = description_str.replace(" ", "&nbsp")
     p_start = "<p style='text-align: right; color:" + color + "'>"
     big = "<span style='font-size:4em; opacity: 0.8;'><b>" + number_str + "</b></span>"
-    small = "<span style='font-size: 1.5em; color: #b3ffff ;'>" + description_str + "</span>"
+    small = "<span style='font-size: 1.5em; opacity: 0.8; color: #b3ffff ;'>" + description_str + "</span>"
     p_end = "</p>"
     html_string = p_start + big + small + p_end
     return html_string
