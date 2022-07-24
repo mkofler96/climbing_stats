@@ -15,7 +15,7 @@ def set_bg_hack(main_bg):
     st.markdown(
         f"""
          <style>
-         .reportview-container {{
+         .stApp {{
              background-image: url(data:image/{main_bg_ext};base64,{base64.b64encode(open(main_bg, "rb").read()).decode()});
              background-size: cover;
          }}
