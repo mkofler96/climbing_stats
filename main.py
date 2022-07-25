@@ -45,7 +45,7 @@ ax.grid(axis='y',zorder=0, color=grid_color)
 plt.bar(df["Datum"], df["Dauer"], color=graph_color, alpha=1, zorder=3)
 ax.set_xlim([datetime.date(2022, 1, 1), datetime.date.today()])
 
-myFmt = DateFormatter("%d. %b")
+myFmt = DateFormatter("%b")
 ax.xaxis.set_major_formatter(myFmt)
 f.autofmt_xdate()
 c_a3.pyplot(f)
@@ -66,14 +66,14 @@ def html_string_big_small(number, description, color):
     description_str = description_str.replace(" ", "&nbsp")
     p_start = "<p style='text-align: right; color:" + color + "'>"
     big = "<span style='font-size:4em; opacity: 0.8;'><b>" + number_str + "</b></span>"
-    small = "<span style='font-size: 1.5em; opacity: 0.8; color: #b3ffff ;'>" + description_str + "</span>"
+    small = "<span style='font-size: 1.5em; opacity: 0.8; color: " + grid_color + " ;'>" + description_str + "</span>"
     p_end = "</p>"
     html_string = p_start + big + small + p_end
     return html_string
 
 c_a2.markdown("<br>", unsafe_allow_html=True)
-c_a2.markdown(html_string_big_small(total_hours, " ...hours climbed", text_color), unsafe_allow_html=True)
-c_a2.markdown(html_string_big_small(weekly_average, " ...weekly average", text_color), unsafe_allow_html=True)
+c_a2.markdown(html_string_big_small(total_hours, " hours climbed", text_color), unsafe_allow_html=True)
+c_a2.markdown(html_string_big_small(weekly_average, " weekly average", text_color), unsafe_allow_html=True)
 
 st.markdown("<h1 style='text-align: center; opacity: 0.5; font-size: 6em; color:"+header_color+"'><a href='https://docs.google.com/spreadsheets/d/1PJJMCrKVytjHbhaXi10CH5E-LDQUj1R4Xw3UDUvMvg4/edit#gid=2044315872' target='_blank' style='color: "+header_color+";text-decoration: none'>2022</a></h1>", unsafe_allow_html=True)
 
